@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Workshop 3</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <script>
+        function showAlert() {
+            alert("You clicked me! " + new Date());
+        }
+
+        function showTable() {
+            document.write(`
+                <table id="example" class="display">
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Position</th>
+                            <th>Salary</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Tiger Nixon</td>
+                            <td>System Architect</td>
+                            <td>$320,800</td>
+                        </tr>
+                        <tr>
+                            <td>Garrett Winters</td>
+                            <td>Accountant</td>
+                            <td>$170,750</td>
+                        </tr>
+                        <tr>
+                            <td>Ashton Cox</td>
+                            <td>Junior Technical Author</td>
+                            <td>$86,000</td>
+                        </tr>
+                        <tr>
+                            <td>Cedric Kelly</td>
+                            <td>Senior Javascript Developer</td>
+                            <td>$433,060</td>
+                        </tr>
+                        <tr>
+                            <td>Airi Satou</td>
+                            <td>Accountant</td>
+                            <td>$162,700</td>
+                        </tr>
+                    </tbody>
+                </table>
+            `);
+        }
+
+        function getLocation() {
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(function(position) {
+                    console.log("Latitude: " + position.coords.latitude + ", Longitude: " + position.coords.longitude);
+                    document.getElementById("coordinates").innerHTML = 
+                        "Latitude: " + position.coords.latitude + "<br>Longitude: " + position.coords.longitude;
+                });
+            } else {
+                alert("Geolocation is not supported by this browser.");
+            }
+        }
+
+        function mouseOverHeading() {
+            console.log("Stepped over by a mouse!");
+        }
+
+        function mouseOutHeading() {
+            alert("Bye bye mouse!");
+        }
+
+        function countKeyPresses() {
+            const text = document.getElementById("textdata").value.length;
+            document.getElementById("charcount").innerText = text + " characters typed.";
+        }
+
+        function validateForm() {
+            const textAreaValue = document.getElementById("textdata").value;
+            if (textAreaValue.trim() === "") {
+                alert("Please fill in the textarea.");
+            }
+        }
+
+        function trackMouseMove(event) {
+            const x = event.clientX;
+            const y = event.clientY;
+            console.log("X: " + x + ", Y: " + y);
+            document.getElementById("coordinates").innerHTML = "X: " + x + ", Y: " + y;
+        }
+    </script>
+</head>
+<body class="ws3">
+    <h1>Workshop 3: JavaScript Events</h1>
+    <hr />
+    <p>In this exercise we will practice the use of JavaScript events...</p>
+    <hr/>
+    <h2>Exercise 1</h2>
+    <p>Below you will see three buttons. Edit the source code and add onClick-events to these buttons.</p>
+    <p>
+        <button onclick="showAlert()">Click me</button>
+        <button onclick="showTable()">Show table</button>
+        <button onclick="getLocation()">Geolocation</button>
+    </p>
+
+    <hr/>
+    <h2 id="exercise2" onmouseover="mouseOverHeading()" onmouseout="mouseOutHeading()">Exercise 2</h2>
+    <p>Try the mouse over and out events on this heading.</p>
+
+    <hr/>
+    <h2>Exercise 3</h2>
+    <p>Below you will see a simple form.</p>
+    <form onsubmit="validateForm(); return false;">
+        <textarea id="textdata" onfocus="alert('Please fill in the form with proper data.')" onkeydown="countKeyPresses()"></textarea><br>
+        <span id="charcount"></span><br>
+        <button type="submit">Send me</button>
+    </form>
+
+    <hr/>
+    <h2 id="coords">Exercise 4</h2>
+    <div id="coordinates" onmousemove="trackMouseMove(event)" class="border"></div>
+</body>
+</html>
