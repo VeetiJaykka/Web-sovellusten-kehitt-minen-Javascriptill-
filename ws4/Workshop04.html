@@ -1,0 +1,208 @@
+<!doctype html>
+<HTML lang="en">
+  <head>
+    <title>Workshop 4</title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="css/styles.css">
+  </head>
+  <body class="ws4">
+    <h1 id="heading">Workshop 4: DOM Scripting</h1>
+    <hr />
+    <p>
+      In this exercise we will practice the art of DOM Scripting with JavaScript. 
+      Use the lecture-material as a reference guide side by side these exercises. 
+      It might also be a good idea to save the lines of code you write during the exercises for later use.
+    </p>
+
+    <hr/>
+    <h2 id="exercise2-heading">Exercise 1: Basic DOM Manipulation</h2>
+    <p>&nbsp;Below you will see three buttons. Edit the source code and add onClick-events to these buttons. Use Developer Console to find the</p>
+    <p>
+      <button onclick="changeHeading()">Button 1</button>
+      <button onclick="modifyStyle()">Button 2</button>
+      <button onclick="appendText()">Button 3</button>
+    </p>
+
+    <ul>
+      <li>
+        The first button should run a JavaScript-function, which will find the reference to "Workshop 4" heading on this page and change the contents of it to "Modified Heading!".
+      </li>
+      <li>
+        The second button should run a function, which will modify the style of the "Exercise 2" heading on this page. JavaScript should change at least the font size, style, color, and the background color.
+      </li>
+      <li>
+        The third button should append the following text paragraph after the <strong>4th paragraph tag &lt;p&gt;</strong> on the page (without overwriting the current content). Change the background of the entire page as well. The Lorem ipsum text should be in italics. It should also add a logo image of some sort after the text.
+      </li>
+    </ul>
+
+    <p id="p4">This is the 4th paragraph.</p>
+
+    <hr/>
+    <h2>Exercise 2: DOM Traversing using ID's and classes</h2>
+    <p class="surprise">Add onchange-events to following checkboxes.</p>
+    <p>
+      <label>
+        <input onchange="hide()" type="checkbox" name="CheckboxGroup1" id="CheckboxGroup1_0"> Hide me 
+      </label>
+      <br>
+      <label>
+        <input onchange="show()" type="checkbox" name="CheckboxGroup1" id="CheckboxGroup1_1"> Show me
+      </label>
+      <br>
+      <label>
+        <input onchange="surprise()" type="checkbox" name="CheckboxGroup1" id="CheckboxGroup1_2"> Surprise
+      </label>
+    </p>
+    <div id="me" class="red-box">This is me</div>
+
+    <hr/>
+    <h2>Exercise 3: Images and pulldowns</h2>
+    <p>Select a new car from the list.</p>
+    <select name="mySelect" id="mySelect" onchange="showChoice()">
+      <option value="BMW">BMW</option>
+      <option value="Audi">Audi</option>
+      <option value="Mercedes">Mercedes</option>
+      <option value="Volvo">Volvo</option>
+    </select>
+
+    <br><br>
+    <img id="carimage" src="https://www.bmw.fi/content/dam/bmw/common/all-models/m-series/m8-coupe/2022/navigation/bmw-8series-coupe-modellfinder.png" width="400" onmouseover="addBorder()" onmouseout="removeBorder()"/>
+
+    <hr/>
+    <h2>Exercise 4: Moving things around</h2>
+    <button onclick="changePosition()">Move!</button>
+    <button onclick="setInterval(doMove, 1000)">Animate</button>
+    <button onclick="setInterval(fadeOut, 250)">Fade out!</button>
+    <button onclick="remove()">Disappear!</button>
+
+    <hr/>
+    <h2>Exercise 5: Tables</h2>
+    <table id="data" class="display">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Position</th>
+          <th>Salary</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Tiger Nixon</td>
+          <td>System Architect</td>
+          <td>$320,800</td>
+        </tr>
+        <tr>
+          <td>Garrett Winters</td>
+          <td>Accountant</td>
+          <td>$170,750</td>
+        </tr>
+      </tbody>
+    </table>
+    <br>
+    Name: <input type="text" id="name"><br>
+    Position: <input type="text" id="position"><br>
+    Salary: <input type="text" id="salary"><br>
+    <button onclick="insertRows()">Insert</button>
+
+    <script>
+      // Exercise 1
+      function changeHeading() {
+        document.getElementById('heading').textContent = 'Modified Heading!';
+      }
+
+      function modifyStyle() {
+        const heading = document.getElementById('exercise2-heading');
+        heading.style.fontSize = '24px';
+        heading.style.fontStyle = 'italic';
+        heading.style.color = 'red';
+        heading.style.backgroundColor = 'yellow';
+      }
+
+      function appendText() {
+        const newPara = document.createElement('p');
+        newPara.innerHTML = '<em>Lorem ipsum dolor sit amet...</em>';
+        document.body.appendChild(newPara);
+
+        const img = document.createElement('img');
+        img.src = 'https://via.placeholder.com/100';
+        newPara.appendChild(img);
+
+        document.body.style.backgroundColor = '#f0f0f0';
+      }
+
+      // Exercise 2
+      function hide() {
+        document.getElementById('me').style.display = 'none';
+      }
+
+      function show() {
+        document.getElementById('me').style.display = 'block';
+      }
+
+      function surprise() {
+        const surprises = document.querySelectorAll('.surprise');
+        surprises.forEach(el => el.style.fontSize = '20px');
+      }
+
+      // Exercise 3
+      function showChoice() {
+        const car = document.getElementById('mySelect').value;
+        alert('You selected: ' + car);
+        const carimage = document.getElementById('carimage');
+        carimage.src = `https://via.placeholder.com/400x200?text=${car}`;
+      }
+
+      function addBorder() {
+        document.getElementById('carimage').style.border = '5px solid red';
+      }
+
+      function removeBorder() {
+        document.getElementById('carimage').style.border = 'none';
+      }
+
+      // Exercise 4
+      function changePosition() {
+        const carimage = document.getElementById('carimage');
+        carimage.style.position = 'relative';
+        carimage.style.left = '200px';
+        carimage.style.top = '500px';
+      }
+
+      function doMove() {
+        const carimage = document.getElementById('carimage');
+        let position = 0;
+        const id = setInterval(frame, 5);
+        function frame() {
+          if (position == 350) {
+            clearInterval(id);
+          } else {
+            position++; 
+            carimage.style.left = position + 'px'; 
+          }
+        }
+      }
+
+      function fadeOut() {
+        const img = document.getElementById('carimage');
+        let opacity = parseFloat(window.getComputedStyle(img).opacity);
+        if (opacity > 0) {
+          img.style.opacity = opacity - 0.1;
+        }
+      }
+
+      function remove() {
+        const img = document.getElementById('carimage');
+        img.remove();
+      }
+
+      // Exercise 5
+      function insertRows() {
+        const table = document.getElementById('data').getElementsByTagName('tbody')[0];
+        const newRow = table.insertRow();
+        newRow.insertCell(0).textContent = document.getElementById('name').value;
+        newRow.insertCell(1).textContent = document.getElementById('position').value;
+        newRow.insertCell(2).textContent = document.getElementById('salary').value;
+      }
+    </script>
+  </body>
+</html>
