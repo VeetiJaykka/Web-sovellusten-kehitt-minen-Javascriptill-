@@ -1,0 +1,23 @@
+body {
+  background-color: #eef2f7;
+  font-family: 'Arial', sans-serif;
+}
+
+.card {
+  max-width: 600px;
+  margin: auto;
+}
+
+.completed {
+  text-decoration: line-through;
+  color: gray;
+  font-style: italic;
+}
+
+.list-group-item {
+  border-radius: 5px;
+}
+
+.list-group-item .btn {
+  margin-left: 5px;
+}
