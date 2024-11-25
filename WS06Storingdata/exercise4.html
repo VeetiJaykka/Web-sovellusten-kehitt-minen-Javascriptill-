@@ -1,0 +1,35 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Form with Extra Fields</title>
+    <script src="exercise4.js" defer></script>
+</head>
+<body>
+    <form id="extendedContactForm" onsubmit="validateForm(event)">
+        <label for="email">Email address:</label>
+        <input type="text" id="email" name="email"><br>
+
+        <label for="comment">Comment:</label><br>
+        <textarea id="comment" name="comment"></textarea><br>
+
+        <label for="contactMethod">Preferred Contact Method:</label>
+        <select id="contactMethod" onchange="toggleExtraField()">
+            <option value="">Select</option>
+            <option value="email">Email</option>
+            <option value="phone">Phone</option>
+            <option value="sms">SMS</option>
+        </select><br>
+
+        <div id="extraField" style="display: none;">
+            <label id="extraFieldLabel"></label>
+            <input type="text" id="extraFieldInput">
+        </div><br>
+
+        <button type="submit">Submit</button>
+    </form>
+</body>
+</html>
+    

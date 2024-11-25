@@ -1,0 +1,29 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SessionStorage Example</title>
+    <script src="exercise3.js" defer></script>
+</head>
+<body>
+    <form id="sessionForm">
+        <label for="destination">Destination:</label>
+        <input type="text" id="destination"><br>
+
+        <label for="arrivalDate">Arrival Date:</label>
+        <input type="date" id="arrivalDate"><br>
+
+        <label>Services:</label><br>
+        <input type="checkbox" id="internet" value="Internet"> Internet<br>
+        <input type="checkbox" id="airConditioning" value="Air Conditioning"> Air Conditioning<br>
+        <input type="checkbox" id="minibar" value="Minibar"> Minibar<br>
+        <input type="checkbox" id="carRent" value="Car rent"> Car rent<br>
+        <input type="checkbox" id="sauna" value="Sauna"> Sauna<br>
+
+        <button type="button" onclick="saveSessionData()">Save Session Data</button>
+    </form>
+</body>
+</html>
+    
