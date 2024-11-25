@@ -1,0 +1,24 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Form</title>
+    <script src="exercise1.js" defer></script>
+</head>
+<body>
+    <form id="contactForm" onsubmit="validateForm(event)">
+        <label for="email">Email address:</label>
+        <input type="text" id="email" name="email">
+        <span id="emailError" style="color: red;"></span><br>
+
+        <label for="comment">Comment:</label><br>
+        <textarea id="comment" name="comment"></textarea>
+        <span id="commentError" style="color: red;"></span><br>
+
+        <button type="submit">Submit</button>
+    </form>
+</body>
+</html>
+    

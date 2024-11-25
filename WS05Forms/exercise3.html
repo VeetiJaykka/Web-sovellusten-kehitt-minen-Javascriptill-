@@ -1,0 +1,32 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book Order</title>
+    <script src="exercise3.js" defer></script>
+</head>
+<body>
+    <form id="bookOrderForm" oninput="calculateTotal()">
+        <label for="quantity">Quantity:</label>
+        <input type="number" id="quantity"><br>
+
+        <label for="price">Price Per Unit:</label>
+        <input type="number" step="0.01" id="price"><br>
+
+        <label for="vat">VAT (%):</label>
+        <input type="number" id="vat"><br>
+
+        <label for="discount">Discount:</label>
+        <input type="number" step="0.01" id="discount"><br>
+
+        <label for="shipping">Shipping:</label>
+        <input type="number" step="0.01" id="shipping"><br>
+
+        <label for="total">Total:</label>
+        <input type="text" id="total" readonly><br>
+    </form>
+</body>
+</html>
+    
